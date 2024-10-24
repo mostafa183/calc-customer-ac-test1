@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة تكلفة اكتساب العملاء – CAC</title>
+    <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+            color: #333;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #0b214f;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        /* Calculator container */
+        .calculator-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Form fields */
+        .calculator-container h2 {
+            color: #0b214f;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Button styling */
+        .submit-btn {
+            background-color: #0b214f;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #4868b1;
+        }
+
+        /* Result display */
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0b214f;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .calculator-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with logo -->
+    <header>
+        <img src="https://cdn.prod.website-files.com/614319338322d2f96eb4dd96/62124643bd803240ec14b13a_Wuilt%20logo.svg" alt="Wuilt Logo">
+    </header>
+
+    <!-- Calculator Container -->
+    <div class="calculator-container">
+        <h2>حاسبة تكلفة اكتساب العملاء (CAC)</h2>
+
+        <!-- Form to input values -->
+        <div class="form-group">
+            <label for="marketing-cost">تكلفة التسويق</label>
+            <input type="number" id="marketing-cost" placeholder="أدخل تكلفة التسويق" required>
+        </div>
+
+        <div class="form-group">
+            <label for="sales-cost">تكلفة المبيعات</label>
+            <input type="number" id="sales-cost" placeholder="أدخل تكلفة المبيعات" required>
+        </div>
+
+        <div class="form-group">
+            <label for="new-customers">عدد العملاء الجدد</label>
+            <input type="number" id="new-customers" placeholder="أدخل عدد العملاء الجدد" required>
+        </div>
+
+        <!-- Submit button -->
+        <button class="submit-btn" onclick="calculateCAC()">احسب تكلفة اكتساب العميل</button>
+
+        <!-- Result Display -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateCAC() {
+            const marketingCost = document.getElementById('marketing-cost').value;
+            const salesCost = document.getElementById('sales-cost').value;
+            const newCustomers = document.getElementById('new-customers').value;
+
+            if (marketingCost && salesCost && newCustomers) {
+                const cac = (parseFloat(marketingCost) + parseFloat(salesCost)) / parseInt(newCustomers);
+                document.getElementById('result').innerText = 'تكلفة اكتساب العميل: ' + cac.toFixed(2) + ' دولار';
+            } else {
+                document.getElementById('result').innerText = 'يرجى إدخال جميع القيم المطلوبة';
+            }
+        }
+    </script>
+</body>
+</html>
